@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
+import java.sql.*;
 import java.awt.*;
 
 import static oracle.jrockit.jfr.events.Bits.intValue;
@@ -38,6 +39,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
         launch(args);
+
     }
 
     @Override
@@ -109,7 +111,7 @@ public class Main extends Application {
         Button exitButton = new Button("* - Exit");
         Label filler2 = new Label();
         exitButton.getStyleClass().addAll("button-big-yellow");
-        exitButtonPane.getChildren().addAll(exitButton,filler2);
+        exitButtonPane.getChildren().addAll(exitButton, filler2);
         exitButtonPane.setAlignment(Pos.CENTER);
 
         //Saldo Top Stackpane + children
@@ -168,7 +170,7 @@ public class Main extends Application {
         seventig.getStyleClass().addAll("button-big-yellow");
         Button honderd = new Button("4 - 100");
         honderd.getStyleClass().addAll("button-big-yellow");
-        opneemLinks.getChildren().addAll(twintig,vijftig,seventig,honderd);
+        opneemLinks.getChildren().addAll(twintig, vijftig, seventig, honderd);
         opneemLinks.setAlignment(Pos.CENTER);
 
         //Opneem Right Vbox + Children
@@ -227,19 +229,21 @@ public class Main extends Application {
         window.show();
 
         //Listeners
-        sceneSwitch.switchValueProperty().addListener((v, oldValue, newValue) ->{
+        sceneSwitch.switchValueProperty().addListener((v, oldValue, newValue) -> {
             int newNumber = intValue(newValue);
 
-            if(newNumber == 0){
+            if (newNumber == 0) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         window.setScene(menuScene);
                     }
                 });
             }
-            if(newNumber == 1){
+            if (newNumber == 1) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         window.setScene(startScene);
                     }
                 });
@@ -248,40 +252,45 @@ public class Main extends Application {
 
         });
 
-        pinValue.pinValueProperty().addListener((v, oldValue, newValue) ->{
+        pinValue.pinValueProperty().addListener((v, oldValue, newValue) -> {
             int newNumber = intValue(newValue);
 
-            if(newNumber == 0){
+            if (newNumber == 0) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         pinText.setText("_   _   _   _");
                     }
                 });
             }
-            if(newNumber == 1){
+            if (newNumber == 1) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         pinText.setText("*   _   _   _");
                     }
                 });
             }
-            if(newNumber == 2){
+            if (newNumber == 2) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         pinText.setText("*   *   _   _");
                     }
                 });
             }
-            if(newNumber == 3){
+            if (newNumber == 3) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         pinText.setText("*   *   *   _");
                     }
                 });
             }
-            if(newNumber == 4){
+            if (newNumber == 4) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         pinText.setText("*   *   *   *");
                     }
                 });
@@ -291,24 +300,27 @@ public class Main extends Application {
         menuSwitch.menuSwitchProperty().addListener((v, oldValue, newValue) -> {
             int newNumber = intValue(newValue);
 
-            if(newNumber == 0){
+            if (newNumber == 0) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         window.setScene(startScene);
                     }
                 });
             }
-            if(newNumber == 1){
+            if (newNumber == 1) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         window.setScene(saldoScene);
                     }
                 });
 
             }
-            if(newNumber == 2){
+            if (newNumber == 2) {
                 Platform.runLater(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         window.setScene(opneemScene);
                     }
                 });
