@@ -17,7 +17,7 @@ public class DatabaseConnector {
     //URL aanpassen aan welke API gebruikt wordt
     private String url = "https://bytegroep2.scriptonic.nl/BankApi.php";
     //Test Parameters om inloggen te testen
-    private String urlParameters = "username=71090885&password=1234&terminalId=1&action=fetch";
+    private String urlParameters = "username=71090885&password=1234&terminalId=2&action=fetch";
     //Roep deze aan om de input van de API te bekijken
     private String stringOutput;
     //Variabelen om aan te roepen in je bank
